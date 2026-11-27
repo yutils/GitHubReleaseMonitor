@@ -11,7 +11,7 @@ Completely free and open source · [github.com/yutils/GitHubReleaseMonitor](http
 
 A Windows tray utility that watches GitHub releases and notifies you in the bottom-right corner. Single-file exe with no third-party DLLs.
 
-**Current version: v0.0.1** · **Free:** this software is completely free · **Source:** [yutils/GitHubReleaseMonitor](https://github.com/yutils/GitHubReleaseMonitor)
+**Current version: v0.0.2** · **Free:** this software is completely free · **Source:** [yutils/GitHubReleaseMonitor](https://github.com/yutils/GitHubReleaseMonitor)
 
 **Language**: click `EN` / `中文` in the top-right corner to switch instantly. Your choice is saved automatically.
 
@@ -25,7 +25,7 @@ A Windows tray utility that watches GitHub releases and notifies you in the bott
 - **GitHub Token**: optional; raises the API limit from 60 to 5,000 requests/hour and enables private repositories.
 - **Tray and startup**: close `×` to the tray; start with Windows and start minimized by default; a second launch restores the existing window.
 - **Status feedback**: next-check countdown, last check, remaining API quota, errors, and optional failure notifications.
-- **Self-update check**: checks the project's own GitHub release on startup. A red dot appears next to the version when a newer version exists; network failures are silent. Check manually from the version link or the tray menu.
+- **Self-update check**: checks the project's own GitHub release on startup. A red dot appears next to the version when a newer version exists; network failures are silent. Check manually from the top-right version link or the tray menu.
 - **Bilingual UI**: switch between Chinese and English from the top-right corner; all windows, tray menus, and notifications update immediately.
 
 ### Screenshots
@@ -41,11 +41,11 @@ A Windows tray utility that watches GitHub releases and notifies you in the bott
 
 ### Usage
 
-1. Download `GitHubReleaseMonitor-v0.0.1.exe` from the project's Releases page and run it (Windows 10/11 includes .NET Framework 4.8).
+1. Download the latest `GitHubReleaseMonitor-v*.exe` from [Releases](https://github.com/yutils/GitHubReleaseMonitor/releases) and run it (Windows 10/11 includes .NET Framework 4.8).
 2. Click **Add repo** and paste `https://github.com/owner/repo`, or enter `owner/repo`.
 3. The latest release is recorded as the baseline on first add, so no immediate alert is sent.
 4. Click `×` to hide to the tray. Double-click the tray icon to reopen; right-click for **Check now**, **Check for updates**, or **Exit**.
-5. Click the version link at the bottom of the window to check for software updates. When an update exists, click the version or tray menu item to open the release page.
+5. Click the version link in the top-right corner, left of the language switch, to check for software updates. When an update exists, click the version or tray menu item to open the release page.
 6. Drag the title bar or any blank area to move the window. The repository list scrolls vertically when needed.
 
 ### Shortcuts
@@ -58,10 +58,11 @@ A Windows tray utility that watches GitHub releases and notifies you in the bott
 
 ### Self-update & releases
 
-- On launch, the app checks `https://github.com/yutils/GitHubReleaseMonitor/releases/latest`. Connection/API failures are ignored silently.
-- Click the version at the bottom (`v0.0.1 · Check for updates`) or use the tray menu to check manually.
+- On launch, the app checks the latest GitHub release of this project. Connection/API failures are ignored silently.
+- Click the version link at the top-right (`v0.0.2 · Check for updates`), left of the language switch, or use the tray menu to check manually.
 - When a newer release is available, a red dot appears beside the version and on the tray icon; click the version to open the release.
-- Release convention: tag `0.0.1`, release title `v0.0.1`, asset `GitHubReleaseMonitor-v0.0.1.exe`. The app reads the release tag (falling back to the release title) and compares the numeric version.
+- Release convention: tag `0.0.2`, release title `v0.0.2`, asset `GitHubReleaseMonitor-v0.0.2.exe`. The app reads the release tag (falling back to the release title) and compares the numeric version.
+- To install an update, exit the running version from the tray first, then launch the newly downloaded exe. The new instance updates the Windows startup entry automatically.
 
 ### Data & security
 
@@ -85,14 +86,14 @@ Or:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
 ```
 
-The version is read from `src/AssemblyInfo.cs`. Output: `dist\GitHubReleaseMonitor-v0.0.1.exe` (single file, no extra DLLs).
+The version is read from `src/AssemblyInfo.cs`. Output: `dist\GitHubReleaseMonitor-v0.0.2.exe` (single file, no extra DLLs).
 
 <a id="zh"></a>
 ## 简体中文
 
 Windows 托盘工具，监听 GitHub 仓库的 Release，有新版本时在屏幕右下角提醒。单文件 exe，无第三方 DLL。
 
-**当前版本：v0.0.1** · **完全免费** · **开源地址：**[yutils/GitHubReleaseMonitor](https://github.com/yutils/GitHubReleaseMonitor)
+**当前版本：v0.0.2** · **完全免费** · **开源地址：**[yutils/GitHubReleaseMonitor](https://github.com/yutils/GitHubReleaseMonitor)
 
 **切换语言**：点击主界面右上角的 `EN` / `中文` 按钮即可即时切换，设置会自动保存。
 
@@ -106,7 +107,7 @@ Windows 托盘工具，监听 GitHub 仓库的 Release，有新版本时在屏�
 - **GitHub Token**：可选，用于提升 API 限额（60 → 5000 次/小时）并访问私有仓库。
 - **托盘与自启**：`×` 最小化到托盘；默认开机自启、静默启动；重复启动唤醒已有窗口。
 - **状态反馈**：检查倒计时、上次检查、API 剩余额度、失败原因；可开启失败通知。
-- **软件自更新检查**：启动时检查本项目 GitHub Release；有新版时版本号旁显示小红点，网络失败静默不提示。可点击版本号或托盘菜单手动检查。
+- **软件自更新检查**：启动时检查本项目 GitHub Release；有新版时版本号旁显示小红点，网络失败静默不提示。可点击右上角版本号或托盘菜单手动检查。
 - **中英文界面**：主界面右上角即时切换，所有窗口、托盘菜单和通知同步切换。
 
 ### 截图
@@ -125,11 +126,11 @@ Windows 托盘工具，监听 GitHub 仓库的 Release，有新版本时在屏�
 
 ### 使用
 
-1. 从项目的 Releases 页面下载 `GitHubReleaseMonitor-v0.0.1.exe` 并运行（Windows 10/11 自带 .NET Framework 4.8）。
+1. 从 [Releases](https://github.com/yutils/GitHubReleaseMonitor/releases) 下载最新的 `GitHubReleaseMonitor-v*.exe` 并运行（Windows 10/11 自带 .NET Framework 4.8）。
 2. 点击「添加仓库」，粘贴 `https://github.com/owner/repo` 或直接输入 `owner/repo`。
 3. 首次添加以当前最新 Release 为基线，不会立即提醒；之后的版本变化会通知。
 4. 点击 `×` 隐藏到托盘继续检查。双击托盘图标打开主界面，右键可立即检查、检查更新或退出。
-5. 点击窗口底部版本号检查软件更新；发现新版本后，点击版本号或托盘菜单打开 Release 页面。
+5. 点击右上角语言切换左侧的版本号检查软件更新；发现新版本后，点击版本号或托盘菜单打开 Release 页面。
 6. 窗口可拖动标题栏或界面空白处移动；仓库较多时列表自动纵向滚动。
 
 ### 快捷键
@@ -142,10 +143,11 @@ Windows 托盘工具，监听 GitHub 仓库的 Release，有新版本时在屏�
 
 ### 软件更新与发布
 
-- 启动时检查 `https://github.com/yutils/GitHubReleaseMonitor/releases/latest`；连接或 API 失败时静默忽略。
-- 点击底部版本号（`v0.0.1 · 检查更新`）或托盘菜单「检查更新」可手动检查。
+- 启动时检查本项目最新的 GitHub Release；连接或 API 失败时静默忽略。
+- 点击右上角语言切换左侧的版本号（`v0.0.2 · 检查更新`）或托盘菜单「检查更新」可手动检查。
 - 发现更高版本时，版本号旁和托盘图标显示小红点；点击版本号打开 Release 页面。
-- 发布约定：tag 使用 `0.0.1`，Release 标题使用 `v0.0.1`，附件使用 `GitHubReleaseMonitor-v0.0.1.exe`。程序读取 tag（tag 无法解析时回退到标题）并比较数字版本。
+- 发布约定：tag 使用 `0.0.2`，Release 标题使用 `v0.0.2`，附件使用 `GitHubReleaseMonitor-v0.0.2.exe`。程序读取 tag（tag 无法解析时回退到标题）并比较数字版本。
+- 安装更新时，请先从托盘退出正在运行的旧版本，再启动新下载的 exe；新实例会自动更新开机启动路径。
 
 ### 数据与安全
 
@@ -169,7 +171,7 @@ build.bat
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
 ```
 
-版本号读取自 `src/AssemblyInfo.cs`。产物：`dist\GitHubReleaseMonitor-v0.0.1.exe`（单文件，无额外 DLL）。
+版本号读取自 `src/AssemblyInfo.cs`。产物：`dist\GitHubReleaseMonitor-v0.0.2.exe`（单文件，无额外 DLL）。
 
 ---
 

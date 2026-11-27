@@ -229,6 +229,8 @@ namespace GitHubReleaseMonitor
             _updateDot.TextAlign = ContentAlignment.MiddleCenter;
             _updateDot.Size = new Size(12, 20);
             _updateDot.Visible = false;
+            _updateDot.Cursor = Cursors.Hand;
+            _updateDot.Click += delegate { OnVersionLabelClicked(); };
 
             _rateLabel = new Label();
             _rateLabel.AutoSize = true;
@@ -244,9 +246,9 @@ namespace GitHubReleaseMonitor
             _checkButton.Size = new Size(104, 32);
             _checkButton.Click += delegate { StartCheck(true); };
 
+            _header.Controls.Add(_versionLabel);
+            _header.Controls.Add(_updateDot);
             _statusBar.Controls.Add(_statusLabel);
-            _statusBar.Controls.Add(_versionLabel);
-            _statusBar.Controls.Add(_updateDot);
             _statusBar.Controls.Add(_rateLabel);
             _statusBar.Controls.Add(_checkButton);
 
@@ -596,7 +598,7 @@ namespace GitHubReleaseMonitor
                     : L10n.T("main.trayUpdate");
                 _trayUpdateItem.ForeColor = _appUpdateAvailable ? Theme.Red : SystemColors.ControlText;
             }
-            LayoutStatusBar();
+            LayoutHeaderButtons();
         }
 
         private void EnableWindowDrag(Control control)
@@ -622,6 +624,26 @@ namespace GitHubReleaseMonitor
             _settingsButton.SetBounds(_minimizeButton.Left - 8 - 38, 16, 38, 32);
             _languageButton.SetBounds(_settingsButton.Left - 10 - _languageButton.Width, 18,
                 _languageButton.Width, _languageButton.Height);
+
+            if (_versionLabel == null || _updateDot == null)
+            {
+                return;
+            }
+
+            int rightEdge = _languageButton.Left - 12;
+            int versionY = _languageButton.Top + (_languageButton.Height - _versionLabel.Height) / 2;
+            int dotY = _languageButton.Top + (_languageButton.Height - _updateDot.Height) / 2;
+
+            if (_updateDot.Visible)
+            {
+                _updateDot.SetBounds(rightEdge - _updateDot.Width, dotY,
+                    _updateDot.Width, _updateDot.Height);
+                _versionLabel.Location = new Point(_updateDot.Left - 4 - _versionLabel.Width, versionY);
+            }
+            else
+            {
+                _versionLabel.Location = new Point(rightEdge - _versionLabel.Width, versionY);
+            }
         }
 
         private void LayoutToolbar()
@@ -639,11 +661,7 @@ namespace GitHubReleaseMonitor
                 _checkButton.Width, _checkButton.Height);
             int rateRight = _checkButton.Left - 16;
             _rateLabel.Location = new Point(rateRight - _rateLabel.Width, 20);
-            _updateDot.SetBounds(_rateLabel.Left - 18 - _updateDot.Width, 17,
-                _updateDot.Width, _updateDot.Height);
-            _versionLabel.Location = new Point(
-                Math.Max(220, _updateDot.Left - 4 - _versionLabel.Width), 16);
-            _statusLabel.SetBounds(36, 17, Math.Max(100, _versionLabel.Left - 48), 20);
+            _statusLabel.SetBounds(36, 17, Math.Max(160, _rateLabel.Left - 48), 20);
         }
 
         private void RebuildCards()
